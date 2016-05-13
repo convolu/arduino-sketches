@@ -26,11 +26,11 @@ void serialEvent() {
 
   newChar = Serial.read();
 
-  if (newChar != '\n') {
+  if (newChar != '\n' || inputCommand.charAt(inputCommand.length() -1) != '\r') {
     inputCommand += char(newChar);
   } else {
+    inputCommand.remove(inputCommand.length() - 1);
     readyCb();
   }
-  
     
 }
